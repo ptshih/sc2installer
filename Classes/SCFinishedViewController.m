@@ -7,7 +7,7 @@
 //
 
 #import "SCFinishedViewController.h"
-
+#import "FlurryAPI.h"
 
 @implementation SCFinishedViewController
 
@@ -41,6 +41,7 @@
 	if(queueCounter == 1) {
 		[queueTimer invalidate];
 		scvImageView.image = [UIImage imageNamed:@"facepalm.png"];
+    [FlurryAPI logEvent:@"facepalm"];
 	}
 	
 	queueCounter--;

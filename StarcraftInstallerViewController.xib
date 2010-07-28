@@ -57,26 +57,26 @@
 					</object>
 					<object class="IBUIImageView" id="399383132">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{157, 469}, {702, 48}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">1.png</string>
+							<string key="NSResourceName">1.jpg</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="591987558">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{241, 524}, {148, 19}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">dataticker001.png</string>
+							<string key="NSResourceName">dataticker001.jpg</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="156031737">
@@ -924,10 +924,10 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>1.png</string>
+				<string>1.jpg</string>
 				<string>box_bottom.png</string>
 				<string>box_top.png</string>
-				<string>dataticker001.png</string>
+				<string>dataticker001.jpg</string>
 				<string>s0.jpg</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
@@ -936,7 +936,7 @@
 				<string>{1024, 748}</string>
 				<string>{1024, 748}</string>
 				<string>{153, 19}</string>
-				<string>{1053, 693}</string>
+				<string>{1024, 674}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">117</string>

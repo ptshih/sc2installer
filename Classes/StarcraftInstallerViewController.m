@@ -8,6 +8,7 @@
 
 #import "StarcraftInstallerViewController.h"
 #import "SCFinishedViewController.h"
+#import "FlurryAPI.h"
 
 @implementation StarcraftInstallerViewController
 
@@ -56,7 +57,6 @@
 	AVAudioPlayer* theAudio=[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];  
 	theAudio.delegate = self;  
 	[theAudio play];
-	
 }
 
 - (void)boxSplitEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
@@ -99,10 +99,12 @@
 }
 
 - (void)cancelInstall {
+  [FlurryAPI logEvent:@"cancelInstall"];
 	[self resetState];
 }
 
 - (void)startInstall {
+  [FlurryAPI logEvent:@"startInstall"];
 	self.installTimer = [NSTimer timerWithTimeInterval:2.61 target:self selector:@selector(percentageTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:installTimer forMode:NSDefaultRunLoopMode];
 	self.dataTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(dataTick) userInfo:nil repeats:YES];
@@ -118,6 +120,7 @@
 }
 
 - (void)finishInstall {
+  [FlurryAPI logEvent:@"finishInstall"];
 	[self.view addSubview:finishedViewController.view];
 	percentBar.hidden = YES;
 }
@@ -141,6 +144,7 @@
 }
 
 - (IBAction)back {
+  [FlurryAPI logEvent:@"farmville"];
 	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"StarCraft too hard? Would you like to play FarmVille instead?" delegate:nil cancelButtonTitle:@"OMG I LOVE FARMVILLE" otherButtonTitles:nil] autorelease];
 	[alertView show];
 }
@@ -158,6 +162,7 @@
 	[self fireStoryTimer];
 	currentPage--;
 	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
+  [FlurryAPI logEvent:@"pageLeft"];
 }
 
 - (IBAction)pageRight {
@@ -166,6 +171,7 @@
 	
 	currentPage++;
 	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
+  [FlurryAPI logEvent:@"pageRight"];
 }
 
 

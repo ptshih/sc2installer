@@ -8,6 +8,7 @@
 
 #import "StarcraftInstallerAppDelegate.h"
 #import "StarcraftInstallerViewController.h"
+#import "FlurryAPI.h"
 
 @implementation StarcraftInstallerAppDelegate
 
@@ -18,8 +19,10 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Flurry
+    [FlurryAPI startSession:@"HPW1G7F6SXP8VLIGYHGQ"];
+  
     // Override point for customization after app launch. 
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];

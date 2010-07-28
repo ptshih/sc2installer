@@ -401,6 +401,7 @@
 		256F398A12003296001E0BFB /* dataticker257.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388712003296001E0BFB /* dataticker257.jpg */; };
 		256F398B12003296001E0BFB /* dataticker258.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388812003296001E0BFB /* dataticker258.jpg */; };
 		256F398C12003296001E0BFB /* dataticker259.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388912003296001E0BFB /* dataticker259.jpg */; };
+		25B2E4B71200DE7F00ACBD3C /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2E4B61200DE7F00ACBD3C /* libFlurry.a */; };
 		25FB880B11FFCE1600321766 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 25FB880A11FFCE1600321766 /* Icon.png */; };
 		25FB884611FFCF3300321766 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 25FB884511FFCF3300321766 /* Icon-72.png */; };
 		25FB895411FFDFF800321766 /* SCFinishedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FB895211FFDFF800321766 /* SCFinishedViewController.m */; };
@@ -807,6 +808,8 @@
 		256F388712003296001E0BFB /* dataticker257.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker257.jpg; sourceTree = "<group>"; };
 		256F388812003296001E0BFB /* dataticker258.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker258.jpg; sourceTree = "<group>"; };
 		256F388912003296001E0BFB /* dataticker259.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker259.jpg; sourceTree = "<group>"; };
+		25B2E4B51200DE7F00ACBD3C /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
+		25B2E4B61200DE7F00ACBD3C /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		25FB880A11FFCE1600321766 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		25FB884511FFCF3300321766 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		25FB895111FFDFF800321766 /* SCFinishedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFinishedViewController.h; sourceTree = "<group>"; };
@@ -831,6 +834,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				250B440112000B2B00D8D7EE /* AVFoundation.framework in Frameworks */,
+				25B2E4B71200DE7F00ACBD3C /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1277,6 +1281,15 @@
 			path = jpg;
 			sourceTree = "<group>";
 		};
+		25B2E4B41200DE7F00ACBD3C /* FlurryLib */ = {
+			isa = PBXGroup;
+			children = (
+				25B2E4B51200DE7F00ACBD3C /* FlurryAPI.h */,
+				25B2E4B61200DE7F00ACBD3C /* libFlurry.a */,
+			);
+			path = FlurryLib;
+			sourceTree = "<group>";
+		};
 		25FB87D811FFCBC900321766 /* Story */ = {
 			isa = PBXGroup;
 			children = (
@@ -1288,6 +1301,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				25B2E4B41200DE7F00ACBD3C /* FlurryLib */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1806,6 +1820,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SC2Installer_Prefix.pch;
 				INFOPLIST_FILE = "SC2Installer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FlurryLib\"",
+				);
 				PRODUCT_NAME = SC2Installer;
 			};
 			name = Debug;
@@ -1818,6 +1836,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SC2Installer_Prefix.pch;
 				INFOPLIST_FILE = "SC2Installer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FlurryLib\"",
+				);
 				PRODUCT_NAME = SC2Installer;
 				VALIDATE_PRODUCT = YES;
 			};
