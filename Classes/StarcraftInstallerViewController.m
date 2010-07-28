@@ -141,7 +141,8 @@
 }
 
 - (IBAction)back {
-	
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"StarCraft too hard? Would you like to play FarmVille instead?" delegate:nil cancelButtonTitle:@"OMG I LOVE FARMVILLE" otherButtonTitles:nil] autorelease];
+	[alertView show];
 }
 
 - (IBAction)resignKeyboard {
