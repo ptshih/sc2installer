@@ -14,6 +14,7 @@
 @synthesize finishedViewController;
 @synthesize storyTimer;
 @synthesize installTimer;
+@synthesize dataTimer;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -21,6 +22,7 @@
         // Custom initialization
 		currentPage = 0;
 		percentCounter = 0;
+		dataCounter = 0;
     }
     return self;
 }
@@ -36,43 +38,88 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.finishedViewController = [[[SCFinishedViewController alloc] initWithNibName:@"SCFinishedViewController" bundle:nil] autorelease];
+	percentBar.hidden = YES;
+	dataBar.hidden = YES;
+
+	// Slide the boxes apart
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:1.5]; // animation duration in seconds
+//	boxTop.center = CGPointMake(512, -187);
+//	boxBottom.center = CGPointMake(512, 935);
+	boxTop.center = CGPointMake(512, 354);
+	boxBottom.center = CGPointMake(512, 394);
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(boxSplitEnded:finished:context:)];
+	[UIView commitAnimations];
+	
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"liftoff" ofType:@"m4a"];  
+	AVAudioPlayer* theAudio=[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];  
+	theAudio.delegate = self;  
+	[theAudio play];
+	
 }
+
+- (void)boxSplitEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	// Slide the boxes apart
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:1.0]; // animation duration in seconds
+	boxTop.center = CGPointMake(512, -374);
+	boxBottom.center = CGPointMake(512, 1122);
+	[UIView commitAnimations];
+} 
 
 - (void)resetState {
 	currentPage = 0;
 	percentCounter = 0;
+	dataCounter = 0;
+	dataBar.hidden = YES;
+	percentBar.hidden = YES;
+	installLocation.hidden = NO;
 	if([storyTimer isValid]) [storyTimer invalidate];
 	[installTimer invalidate];
+	[dataTimer invalidate];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
+	percentBar.image = [UIImage imageNamed:@"1.png"];
 }
 
 - (void)percentageTick {
-	if(percentCounter == 98) { // finished installation
+	if(percentCounter == 99) { // finished installation
 		[self resetState];
 		[self finishInstall];
 	} else {
 		NSLog(@"tick: %d",percentCounter);
 		percentCounter++;
-//		percentBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"p-%d.png",percentCounter]];
+		percentBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",percentCounter]];
 	}
+}
+
+- (void)dataTick {
+	dataCounter++;
+	dataBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"dataticker%03d.png",dataCounter]];
 }
 
 - (void)cancelInstall {
 	[self resetState];
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",currentPage]];
 }
 
 - (void)startInstall {
-	self.installTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(percentageTick) userInfo:nil repeats:YES];
+	self.installTimer = [NSTimer timerWithTimeInterval:0.0261 target:self selector:@selector(percentageTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:installTimer forMode:NSDefaultRunLoopMode];
+	self.dataTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(dataTick) userInfo:nil repeats:YES];
+	[[NSRunLoop currentRunLoop] addTimer:dataTimer forMode:NSDefaultRunLoopMode];
 	
 	[self fireStoryTimer];
 	
 	currentPage = 1;
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
+	percentBar.hidden = NO;
+	dataBar.hidden = NO;
+	installLocation.hidden = YES;
 }
 
 - (void)finishInstall {
 	[self.view addSubview:finishedViewController.view];
+	percentBar.hidden = YES;
 }
 
 - (void)fireStoryTimer {
@@ -89,15 +136,27 @@
 	}
 }
 
+- (IBAction)change {
+	[installLocation becomeFirstResponder];
+}
+
 - (IBAction)back {
 	
+}
+
+- (IBAction)resignKeyboard {
+	[installLocation resignFirstResponder];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+	return YES;
 }
 
 - (IBAction)pageLeft {
 	if(currentPage == 1) return; // stop at first story page
 	[self fireStoryTimer];
 	currentPage--;
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
 }
 
 - (IBAction)pageRight {
@@ -105,7 +164,7 @@
 	[self fireStoryTimer];
 	
 	currentPage++;
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
 }
 
 
@@ -131,6 +190,7 @@
 	[finishedViewController release];
 	if(installTimer) [installTimer release];
 	if(storyTimer) [storyTimer release];
+	if(dataTimer) [dataTimer release];
     [super dealloc];
 }
 

@@ -11,15 +11,15 @@
 
 @implementation SCFinishedViewController
 
-/*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
+		queueCounter = 1337;
+		timeCounter = 13;
     }
     return self;
 }
-*/
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -29,7 +29,29 @@
 */
 
 - (IBAction)finishInstall {
-	finishedScreen.image = [UIImage imageNamed:@"bnet.png"];
+//	finishedScreen.image = [UIImage imageNamed:@"scv.png"];
+	finishedScreen.hidden = YES;
+	scvView.hidden = NO;
+	
+	queueTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
+	[[NSRunLoop currentRunLoop] addTimer:queueTimer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)queueTick {
+	if(queueCounter == 1) {
+		[queueTimer invalidate];
+	}
+	
+	queueCounter--;
+	if(queueCounter % 100 == 0) timeCounter--;
+	queueLabel.text = [NSString stringWithFormat:@"Position in queue: %d",queueCounter];
+	if(timeCounter == 0) {
+		timeLabel.text = @"Less than one minute...";
+	} else if (timeCounter < 0) {
+		timeLabel.text = @"Did you really think you could play StarCraft II on your iPad?";
+	} else {
+		timeLabel.text = [NSString stringWithFormat:@"Estimated time: %d minutes",timeCounter];
+	}
 }
 
 

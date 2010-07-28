@@ -11,6 +11,14 @@
 
 @interface SCFinishedViewController : UIViewController {
 	IBOutlet UIImageView *finishedScreen;
+	IBOutlet UIView *scvView;
+	IBOutlet UILabel *queueLabel;
+	IBOutlet UILabel *timeLabel;
+	
+	NSInteger queueCounter;
+	NSInteger timeCounter;
+	
+	NSTimer *queueTimer;
 }
 
 - (IBAction)finishInstall;

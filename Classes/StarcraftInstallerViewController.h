@@ -6,31 +6,41 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
 @class SCFinishedViewController;
 
-@interface StarcraftInstallerViewController : UIViewController {
+@interface StarcraftInstallerViewController : UIViewController <AVAudioPlayerDelegate> {
 	IBOutlet UIImageView *installerScreen;
 	IBOutlet UIImageView *percentBar;
+	IBOutlet UIImageView *dataBar;
+	IBOutlet UIImageView *boxTop;
+	IBOutlet UIImageView *boxBottom;
+	IBOutlet UITextField *installLocation;
 	NSUInteger currentPage;
 	NSUInteger percentCounter;
+	NSUInteger dataCounter;
 	
 	SCFinishedViewController *finishedViewController;
 	
 	NSTimer *installTimer;
 	NSTimer *storyTimer;
+	NSTimer *dataTimer;
 }
 
 @property (nonatomic, retain) SCFinishedViewController *finishedViewController;
 
 @property (retain) NSTimer *storyTimer;
 @property (retain) NSTimer *installTimer;
+@property (retain) NSTimer *dataTimer;
 
 - (void)resetState;
 - (void)fireStoryTimer;
 - (void)finishInstall;
+- (IBAction)resignKeyboard;
 - (IBAction)okCancel;
+- (IBAction)change;
 - (IBAction)back;
 - (IBAction)pageLeft;
 - (IBAction)pageRight;
