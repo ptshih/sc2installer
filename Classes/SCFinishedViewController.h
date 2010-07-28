@@ -11,6 +11,7 @@
 
 @interface SCFinishedViewController : UIViewController {
 	IBOutlet UIImageView *finishedScreen;
+	IBOutlet UIImageView *scvImageView;
 	IBOutlet UIView *scvView;
 	IBOutlet UILabel *queueLabel;
 	IBOutlet UILabel *timeLabel;

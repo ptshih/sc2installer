@@ -78,7 +78,7 @@
 	if([storyTimer isValid]) [storyTimer invalidate];
 	[installTimer invalidate];
 	[dataTimer invalidate];
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
 	percentBar.image = [UIImage imageNamed:@"1.png"];
 }
 
@@ -89,13 +89,13 @@
 	} else {
 		NSLog(@"tick: %d",percentCounter);
 		percentCounter++;
-		percentBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",percentCounter]];
+		percentBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",percentCounter]];
 	}
 }
 
 - (void)dataTick {
 	dataCounter++;
-	dataBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"dataticker%03d.png",dataCounter]];
+	dataBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"dataticker%03d.jpg",dataCounter]];
 }
 
 - (void)cancelInstall {
@@ -111,7 +111,7 @@
 	[self fireStoryTimer];
 	
 	currentPage = 1;
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
 	percentBar.hidden = NO;
 	dataBar.hidden = NO;
 	installLocation.hidden = YES;
@@ -157,7 +157,7 @@
 	if(currentPage == 1) return; // stop at first story page
 	[self fireStoryTimer];
 	currentPage--;
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
 }
 
 - (IBAction)pageRight {
@@ -165,7 +165,7 @@
 	[self fireStoryTimer];
 	
 	currentPage++;
-	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.png",currentPage]];
+	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
 }
 
 

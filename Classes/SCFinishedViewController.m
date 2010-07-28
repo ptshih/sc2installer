@@ -33,13 +33,14 @@
 	finishedScreen.hidden = YES;
 	scvView.hidden = NO;
 	
-	queueTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
+	queueTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:queueTimer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)queueTick {
 	if(queueCounter == 1) {
 		[queueTimer invalidate];
+		scvImageView.image = [UIImage imageNamed:@"facepalm.png"];
 	}
 	
 	queueCounter--;
@@ -53,7 +54,6 @@
 		timeLabel.text = [NSString stringWithFormat:@"Estimated time: %d minutes",timeCounter];
 	}
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
