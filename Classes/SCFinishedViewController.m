@@ -33,7 +33,7 @@
 	finishedScreen.hidden = YES;
 	scvView.hidden = NO;
 	
-	queueTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
+	queueTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:queueTimer forMode:NSDefaultRunLoopMode];
 }
 

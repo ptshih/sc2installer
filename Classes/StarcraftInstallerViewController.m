@@ -103,9 +103,9 @@
 }
 
 - (void)startInstall {
-	self.installTimer = [NSTimer timerWithTimeInterval:0.0261 target:self selector:@selector(percentageTick) userInfo:nil repeats:YES];
+	self.installTimer = [NSTimer timerWithTimeInterval:2.61 target:self selector:@selector(percentageTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:installTimer forMode:NSDefaultRunLoopMode];
-	self.dataTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(dataTick) userInfo:nil repeats:YES];
+	self.dataTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(dataTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:dataTimer forMode:NSDefaultRunLoopMode];
 	
 	[self fireStoryTimer];
@@ -124,7 +124,7 @@
 
 - (void)fireStoryTimer {
 	if([storyTimer isValid]) [storyTimer invalidate];
-	self.storyTimer = [NSTimer timerWithTimeInterval:10 target:self selector:@selector(pageRight) userInfo:nil repeats:NO];
+	self.storyTimer = [NSTimer timerWithTimeInterval:12 target:self selector:@selector(pageRight) userInfo:nil repeats:NO];
 	[[NSRunLoop currentRunLoop] addTimer:storyTimer forMode:NSDefaultRunLoopMode];
 }
 
