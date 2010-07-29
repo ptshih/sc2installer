@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-  self.playerViewController = [[[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"rickroll" ofType:@"mov"]]] autorelease];
+  self.playerViewController = [[[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"rickroll" ofType:@"3gp"]]] autorelease];
   
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerReady:) name:MPMoviePlayerLoadStateDidChangeNotification object:[playerViewController moviePlayer]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:[playerViewController moviePlayer]];

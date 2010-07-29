@@ -407,10 +407,10 @@
 		256F398B12003296001E0BFB /* dataticker258.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388812003296001E0BFB /* dataticker258.jpg */; };
 		256F398C12003296001E0BFB /* dataticker259.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388912003296001E0BFB /* dataticker259.jpg */; };
 		25B2E4B71200DE7F00ACBD3C /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2E4B61200DE7F00ACBD3C /* libFlurry.a */; };
-		25B2E66C1201063B00ACBD3C /* rickroll.mov in Resources */ = {isa = PBXBuildFile; fileRef = 25B2E66B1201063B00ACBD3C /* rickroll.mov */; };
 		25B2E6761201067300ACBD3C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2E6751201067300ACBD3C /* MediaPlayer.framework */; };
 		25B2E67C120106B800ACBD3C /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B2E67A120106B800ACBD3C /* MovieViewController.m */; };
 		25B2E67D120106B800ACBD3C /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B2E67B120106B800ACBD3C /* MovieViewController.xib */; };
+		25B84997120130E200145D7D /* rickroll.3gp in Resources */ = {isa = PBXBuildFile; fileRef = 25B84996120130E200145D7D /* rickroll.3gp */; };
 		25FB880B11FFCE1600321766 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 25FB880A11FFCE1600321766 /* Icon.png */; };
 		25FB884611FFCF3300321766 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 25FB884511FFCF3300321766 /* Icon-72.png */; };
 		25FB895411FFDFF800321766 /* SCFinishedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FB895211FFDFF800321766 /* SCFinishedViewController.m */; };
@@ -824,11 +824,11 @@
 		256F388912003296001E0BFB /* dataticker259.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker259.jpg; sourceTree = "<group>"; };
 		25B2E4B51200DE7F00ACBD3C /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
 		25B2E4B61200DE7F00ACBD3C /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
-		25B2E66B1201063B00ACBD3C /* rickroll.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = rickroll.mov; sourceTree = "<group>"; };
 		25B2E6751201067300ACBD3C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		25B2E679120106B800ACBD3C /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		25B2E67A120106B800ACBD3C /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		25B2E67B120106B800ACBD3C /* MovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
+		25B84996120130E200145D7D /* rickroll.3gp */ = {isa = PBXFileReference; lastKnownFileType = file; path = rickroll.3gp; sourceTree = "<group>"; };
 		25FB880A11FFCE1600321766 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		25FB884511FFCF3300321766 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		25FB895111FFDFF800321766 /* SCFinishedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFinishedViewController.h; sourceTree = "<group>"; };
@@ -1359,7 +1359,7 @@
 			children = (
 				254470DB1200FD8500B39D3E /* sc */,
 				250B43DE12000A6C00D8D7EE /* liftoff.m4a */,
-				25B2E66B1201063B00ACBD3C /* rickroll.mov */,
+				25B84996120130E200145D7D /* rickroll.3gp */,
 				250B468B1200180600D8D7EE /* scv.png */,
 				25041F1912012D0500FB24CC /* install.png */,
 				256F36241200251A001E0BFB /* facepalm.png */,
@@ -1832,9 +1832,9 @@
 				254470E11200FD8500B39D3E /* sc2.jpg in Resources */,
 				254470E21200FD8500B39D3E /* sc3.jpg in Resources */,
 				254470E31200FD8500B39D3E /* sc4.jpg in Resources */,
-				25B2E66C1201063B00ACBD3C /* rickroll.mov in Resources */,
 				25B2E67D120106B800ACBD3C /* MovieViewController.xib in Resources */,
 				25041F1A12012D0500FB24CC /* install.png in Resources */,
+				25B84997120130E200145D7D /* rickroll.3gp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
