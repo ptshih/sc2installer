@@ -10,7 +10,7 @@
 
 @implementation MovieViewController
 
-
+@synthesize playerViewController;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -25,17 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-  MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[self movieURL]];
+  self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[self movieURL]];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:[playerViewController moviePlayer]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerReady:) name:MPMoviePlayerLoadStateDidChangeNotification object:[playerViewController moviePlayer]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:[playerViewController moviePlayer]];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:MPMoviePlayerDidExitFullscreenNotification object:[playerViewController moviePlayer]];
   
   playerViewController.view.frame = self.view.bounds;
   
   [self.view addSubview:playerViewController.view];
-  
-  MPMoviePlayerController *player = [playerViewController moviePlayer];
-  [player play];
+
 
 }
 
@@ -48,6 +47,13 @@
   } else {
     return nil;
   }
+}
+
+- (void)playerReady:(NSNotification *)notification {
+	MPMoviePlayerController *player = [notification object];
+	if(player.loadState == 3) {
+		[player play];
+	}
 }
 
 - (void)playbackFinished:(NSNotification *)notification {
@@ -79,6 +85,7 @@
 
 
 - (void)dealloc {
+	[playerViewController release];
     [super dealloc];
 }
 

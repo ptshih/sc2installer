@@ -11,7 +11,10 @@
 #import <MediaPlayer/MPMoviePlayerViewController.h>
 
 @interface MovieViewController : UIViewController {
+	MPMoviePlayerViewController *playerViewController;
 }
+
+@property (nonatomic, retain) MPMoviePlayerViewController *playerViewController;
 
 - (NSURL *)movieURL;
 
