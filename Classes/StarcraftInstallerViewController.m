@@ -59,6 +59,7 @@
 } 
 
 - (void)resetState {
+	[audioPlayer stop];
 	boxTop.center = CGPointMake(512, 374);
 	boxBottom.center = CGPointMake(512, 374);
 	installView.hidden = NO;
@@ -91,10 +92,6 @@
 	audioPlayer.delegate = self;  
 	[audioPlayer prepareToPlay];
 	[audioPlayer play];
-}
-
-- (IBAction)beginInstall {
-	installView.hidden = YES;
 }
 
 - (void)percentageTick {
@@ -139,6 +136,11 @@
 	percentBar.hidden = NO;
 	dataBar.hidden = NO;
 	[self fireStoryTimer];
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"scthememusic" ofType:@"m4a"];  
+	audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+	audioPlayer.delegate = self;  
+	[audioPlayer prepareToPlay];
+	[audioPlayer play];
 }
 
 - (void)finishInstall {
@@ -165,12 +167,36 @@
 }
 
 - (IBAction)change {
-	[installLocation becomeFirstResponder];
+	[FlurryAPI logEvent:@"change"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"I want the white one" message:@"Please try holding the iPad differently." delegate:nil cancelButtonTitle:@"Take my money!" otherButtonTitles:nil] autorelease];
+	[alertView show];
+//	[installLocation becomeFirstResponder];
 }
 
 - (IBAction)back {
-  [FlurryAPI logEvent:@"farmville"];
+	installView.hidden = NO;
+}
+
+- (IBAction)beginInstall {
+	installView.hidden = YES;
+}
+
+
+- (IBAction)exitInstall {
+	[FlurryAPI logEvent:@"exit"];
 	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"StarCraft too hard? Would you like to play FarmVille instead?" delegate:nil cancelButtonTitle:@"OMG I LOVE FARMVILLE" otherButtonTitles:nil] autorelease];
+	[alertView show];
+}
+
+- (IBAction)rtfm {
+	[FlurryAPI logEvent:@"rtfm"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"RTFM" message:@"Seriously? You need a manual for StarCraft?" delegate:nil cancelButtonTitle:@"Take me back to FarmVille" otherButtonTitles:nil] autorelease];
+	[alertView show];
+}
+
+- (IBAction)support {
+	[FlurryAPI logEvent:@"support"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"QQ Moar" message:@"WoW Forums that way --->" delegate:nil cancelButtonTitle:@"Your tears are delicious" otherButtonTitles:nil] autorelease];
 	[alertView show];
 }
 

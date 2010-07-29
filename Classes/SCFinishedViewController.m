@@ -66,7 +66,7 @@
 }
 - (IBAction)credits {
 	[FlurryAPI logEvent:@"credits"];
-	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Credits" message:@"We hope you had as much fun using this app as we did making it! Now go and play StarCraft II!" delegate:nil cancelButtonTitle:@"Thank You!" otherButtonTitles:nil] autorelease];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Credits" message:@"We hope you had as much fun using this app as we did making it! Now go and play StarCraft II! Follow us on twitter @orzware for the lulz" delegate:nil cancelButtonTitle:@"Thank You!" otherButtonTitles:nil] autorelease];
 	[alertView show];
 }
 - (IBAction)sp {
@@ -77,6 +77,12 @@
 - (IBAction)mp {
 	[FlurryAPI logEvent:@"multiPlayer"];
 	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"Did you really think you could play StarCraft on your iPad?" delegate:nil cancelButtonTitle:@"Fine, I'll go play FarmVille" otherButtonTitles:nil] autorelease];
+	[alertView show];
+}
+
+- (IBAction)campaign {
+	[FlurryAPI logEvent:@"dota"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"DotA" message:@"Vi sitter här i venten och spelar lite DotA." delegate:nil cancelButtonTitle:@"I hear you man" otherButtonTitles:nil] autorelease];
 	[alertView show];
 }
 

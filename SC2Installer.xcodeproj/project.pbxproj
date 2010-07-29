@@ -405,6 +405,7 @@
 		256F398A12003296001E0BFB /* dataticker257.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388712003296001E0BFB /* dataticker257.jpg */; };
 		256F398B12003296001E0BFB /* dataticker258.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388812003296001E0BFB /* dataticker258.jpg */; };
 		256F398C12003296001E0BFB /* dataticker259.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 256F388912003296001E0BFB /* dataticker259.jpg */; };
+		258C28F31201772300CCF36D /* scthememusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 258C28F21201772300CCF36D /* scthememusic.m4a */; };
 		25B2E4B71200DE7F00ACBD3C /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2E4B61200DE7F00ACBD3C /* libFlurry.a */; };
 		25B2E6761201067300ACBD3C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2E6751201067300ACBD3C /* MediaPlayer.framework */; };
 		25B2E67C120106B800ACBD3C /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B2E67A120106B800ACBD3C /* MovieViewController.m */; };
@@ -820,6 +821,7 @@
 		256F388712003296001E0BFB /* dataticker257.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker257.jpg; sourceTree = "<group>"; };
 		256F388812003296001E0BFB /* dataticker258.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker258.jpg; sourceTree = "<group>"; };
 		256F388912003296001E0BFB /* dataticker259.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataticker259.jpg; sourceTree = "<group>"; };
+		258C28F21201772300CCF36D /* scthememusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = scthememusic.m4a; sourceTree = "<group>"; };
 		25B2E4B51200DE7F00ACBD3C /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
 		25B2E4B61200DE7F00ACBD3C /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		25B2E6751201067300ACBD3C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -1357,6 +1359,7 @@
 			children = (
 				254470DB1200FD8500B39D3E /* sc */,
 				250B43DE12000A6C00D8D7EE /* liftoff.m4a */,
+				258C28F21201772300CCF36D /* scthememusic.m4a */,
 				25B84996120130E200145D7D /* rickroll.3gp */,
 				250B468B1200180600D8D7EE /* scv.png */,
 				256F36A212002F85001E0BFB /* complete.jpg */,
@@ -1831,6 +1834,7 @@
 				25B2E67D120106B800ACBD3C /* MovieViewController.xib in Resources */,
 				25B84997120130E200145D7D /* rickroll.3gp in Resources */,
 				25041F48120131F800FB24CC /* install.jpg in Resources */,
+				258C28F31201772300CCF36D /* scthememusic.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

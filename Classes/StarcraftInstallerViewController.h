@@ -49,6 +49,9 @@
 - (IBAction)pageLeft;
 - (IBAction)pageRight;
 - (IBAction)beginInstall;
+- (IBAction)exitInstall;
+- (IBAction)rtfm;
+- (IBAction)support;
 
 @end
 

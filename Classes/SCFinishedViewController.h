@@ -30,5 +30,6 @@
 - (IBAction)sp;
 - (IBAction)mp;
 - (IBAction)rickRoll;
+- (IBAction)campaign;
 
 @end

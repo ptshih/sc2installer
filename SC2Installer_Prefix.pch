@@ -8,7 +8,7 @@
 #endif
 
 
-#define kStoryTimerInterval 12
+#define kStoryTimerInterval 10
 
 //#define FAST
 
@@ -17,7 +17,7 @@
 	#define kDataTimerInterval 0.01
 	#define kQueueTimerInterval 0.001
 #else
-	#define kInstallTimerInterval 2.61
-	#define kDataTimerInterval 1
+	#define kInstallTimerInterval 2
+	#define kDataTimerInterval 0.77
 	#define kQueueTimerInterval 0.01
 #endif
