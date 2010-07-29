@@ -8,6 +8,7 @@
 
 #import "SCFinishedViewController.h"
 #import "FlurryAPI.h"
+#import "MovieViewController.h"
 
 @implementation SCFinishedViewController
 
@@ -74,9 +75,12 @@
 	[alertView show];
 }
 - (IBAction)mp {
-	[FlurryAPI logEvent:@"multiPlayer"];
-	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"Did you really think you could play StarCraft on your iPad?" delegate:nil cancelButtonTitle:@"Fine, I'll go play FarmVille" otherButtonTitles:nil] autorelease];
-	[alertView show];
+//	[FlurryAPI logEvent:@"multiPlayer"];
+//	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"Did you really think you could play StarCraft on your iPad?" delegate:nil cancelButtonTitle:@"Fine, I'll go play FarmVille" otherButtonTitles:nil] autorelease];
+//	[alertView show];
+  MovieViewController *mvc = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+  [self presentModalViewController:mvc animated:YES];
+  [mvc release];
 }
 
 - (void)queueTick {
