@@ -29,5 +29,6 @@
 - (IBAction)credits;
 - (IBAction)sp;
 - (IBAction)mp;
+- (IBAction)rickRoll;
 
 @end
