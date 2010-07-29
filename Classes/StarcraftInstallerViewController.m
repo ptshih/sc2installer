@@ -34,11 +34,41 @@
 }
 */
 
+- (void)showKeyboard {
+	NSInteger offset;
+	if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft) {
+		offset = 80;
+	} else if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
+		offset = -80;
+	} else {
+		offset = 0;
+	}
+	[UIView beginAnimations:@"inputViewAnimation" context:nil];
+	[self.view setFrame:CGRectMake(self.view.frame.origin.x - offset, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+	[UIView commitAnimations];
+}
+
+- (void)hideKeyboard {
+	NSInteger offset;
+	if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
+		offset = -80;
+	} else if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft) {
+		offset = 80;
+	} else {
+		offset = 0;
+	}
+
+	[UIView beginAnimations:@"inputViewAnimation" context:nil];
+	[self.view setFrame:CGRectMake(self.view.frame.origin.x + offset, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+	[UIView commitAnimations];
+}
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard) name:UIKeyboardWillHideNotification object:nil];
 	
 }
 
@@ -75,7 +105,6 @@
 	[installTimer invalidate];
 	[dataTimer invalidate];
 	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
-	percentBar.image = [UIImage imageNamed:@"1.png"];
 }
 
 - (void)splitBox {
@@ -107,7 +136,7 @@
 		[self resetState];
 		[self finishInstall];
 	} else {
-		NSLog(@"tick: %d",percentCounter);
+//		NSLog(@"tick: %d",percentCounter);
 		percentCounter++;
 		percentBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",percentCounter]];
 	}
@@ -134,13 +163,15 @@
 	self.dataTimer = [NSTimer timerWithTimeInterval:kDataTimerInterval target:self selector:@selector(dataTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:dataTimer forMode:NSDefaultRunLoopMode];
 	
-	[self fireStoryTimer];
-	
 	currentPage = 1;
+
+	dataBar.image = [UIImage imageNamed:@"dataticker001.jpg"];
+	percentBar.image = [UIImage imageNamed:@"1.jpg"];
 	installerScreen.image = [UIImage imageNamed:[NSString stringWithFormat:@"s%d.jpg",currentPage]];
+	installLocation.hidden = YES;
 	percentBar.hidden = NO;
 	dataBar.hidden = NO;
-	installLocation.hidden = YES;
+	[self fireStoryTimer];
 }
 
 - (void)finishInstall {
@@ -185,6 +216,7 @@
 }
 
 - (IBAction)pageLeft {
+	if(currentPage == 0) return;
 	if(currentPage == 1) return; // stop at first story page
 	[self fireStoryTimer];
 	currentPage--;
@@ -193,6 +225,7 @@
 }
 
 - (IBAction)pageRight {
+	if(currentPage == 0) return;
 	if(currentPage == 22) return; // stop at last story page
 	[self fireStoryTimer];
 	

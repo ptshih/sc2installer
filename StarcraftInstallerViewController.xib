@@ -231,7 +231,7 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">install.png</string>
+									<string key="NSResourceName">install.jpg</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="312871645">
@@ -1039,7 +1039,7 @@
 				<string>box_bottom.png</string>
 				<string>box_top.png</string>
 				<string>dataticker001.jpg</string>
-				<string>install.png</string>
+				<string>install.jpg</string>
 				<string>s0.jpg</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
@@ -1048,7 +1048,7 @@
 				<string>{1024, 748}</string>
 				<string>{1024, 748}</string>
 				<string>{153, 19}</string>
-				<string>{1053, 693}</string>
+				<string>{1024, 674}</string>
 				<string>{1024, 674}</string>
 			</object>
 		</object>
