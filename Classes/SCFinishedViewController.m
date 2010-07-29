@@ -28,31 +28,71 @@
 }
 */
 
+- (void)animateSC {
+	UIImage *sc1 = [UIImage imageNamed:@"sc1.jpg"];
+	UIImage *sc2 = [UIImage imageNamed:@"sc2.jpg"];
+	UIImage *sc3 = [UIImage imageNamed:@"sc3.jpg"];
+	UIImage *sc4 = [UIImage imageNamed:@"sc4.jpg"];
+	
+	endView.hidden = NO;
+	[scvView removeFromSuperview];
+	finishedScreen.hidden = NO;
+	finishedScreen.contentMode = UIViewContentModeScaleToFill;
+	finishedScreen.animationImages = [[[NSArray alloc] initWithObjects:sc1, sc2, sc3, sc4, sc3, sc2, nil] autorelease];
+	finishedScreen.animationDuration = 1;
+	[finishedScreen startAnimating];	
+}
+
 - (IBAction)finishInstall {
 //	finishedScreen.image = [UIImage imageNamed:@"scv.png"];
 	finishedScreen.hidden = YES;
 	scvView.hidden = NO;
+	endView.hidden = YES;
+	finishedButton.hidden = YES;
 	
-	queueTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
+	queueTimer = [NSTimer timerWithTimeInterval:kQueueTimerInterval target:self selector:@selector(queueTick) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:queueTimer forMode:NSDefaultRunLoopMode];
+}
+
+- (IBAction)exit {
+	[FlurryAPI logEvent:@"exit"];
+	finishedButton.hidden = NO;
+	finishedScreen.hidden = NO;
+	scvView.hidden = YES;
+	endView.hidden = YES;
+	[finishedScreen stopAnimating];
+	[self dismissModalViewControllerAnimated:NO];
+}
+- (IBAction)credits {
+	[FlurryAPI logEvent:@"credits"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Credits" message:@"We hope you had as much fun using this app as we did making it! Now go and play StarCraft II!" delegate:nil cancelButtonTitle:@"Thank You!" otherButtonTitles:nil] autorelease];
+	[alertView show];
+}
+- (IBAction)sp {
+	[FlurryAPI logEvent:@"singlePlayer"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"Did you really think you could play StarCraft on your iPad?" delegate:nil cancelButtonTitle:@"Fine, I'll go play FarmVille" otherButtonTitles:nil] autorelease];
+	[alertView show];
+}
+- (IBAction)mp {
+	[FlurryAPI logEvent:@"multiPlayer"];
+	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Epic Fail" message:@"Did you really think you could play StarCraft on your iPad?" delegate:nil cancelButtonTitle:@"Fine, I'll go play FarmVille" otherButtonTitles:nil] autorelease];
+	[alertView show];
 }
 
 - (void)queueTick {
 	if(queueCounter == 1) {
 		[queueTimer invalidate];
-		scvImageView.image = [UIImage imageNamed:@"facepalm.png"];
-    [FlurryAPI logEvent:@"facepalm"];
-	}
-	
-	queueCounter--;
-	if(queueCounter % 100 == 0) timeCounter--;
-	queueLabel.text = [NSString stringWithFormat:@"Position in queue: %d",queueCounter];
-	if(timeCounter == 0) {
-		timeLabel.text = @"Less than one minute...";
-	} else if (timeCounter < 0) {
-		timeLabel.text = @"Did you really think you could play StarCraft II on your iPad?";
+		[self animateSC];
+		[FlurryAPI logEvent:@"finishedQueue"];
 	} else {
-		timeLabel.text = [NSString stringWithFormat:@"Estimated time: %d minutes",timeCounter];
+		queueCounter--;
+		if(queueCounter % 100 == 0) timeCounter--;
+		queueLabel.text = [NSString stringWithFormat:@"Position in queue: %d",queueCounter];
+		if(timeCounter == 0) {
+			timeLabel.text = @"Less than a minute...";
+		} else {
+			timeLabel.text = [NSString stringWithFormat:@"Estimated time: %d minutes",timeCounter];
+		}
 	}
 }
 

@@ -13,8 +13,10 @@
 	IBOutlet UIImageView *finishedScreen;
 	IBOutlet UIImageView *scvImageView;
 	IBOutlet UIView *scvView;
+	IBOutlet UIView *endView;
 	IBOutlet UILabel *queueLabel;
 	IBOutlet UILabel *timeLabel;
+	IBOutlet UIButton *finishedButton;
 	
 	NSInteger queueCounter;
 	NSInteger timeCounter;
@@ -23,5 +25,9 @@
 }
 
 - (IBAction)finishInstall;
+- (IBAction)exit;
+- (IBAction)credits;
+- (IBAction)sp;
+- (IBAction)mp;
 
 @end
