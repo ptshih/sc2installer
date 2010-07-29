@@ -38,24 +38,18 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	percentBar.hidden = YES;
-	dataBar.hidden = YES;
 
-	// Slide the boxes apart
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:1.5]; // animation duration in seconds
-//	boxTop.center = CGPointMake(512, -187);
-//	boxBottom.center = CGPointMake(512, 935);
-	boxTop.center = CGPointMake(512, 354);
-	boxBottom.center = CGPointMake(512, 394);
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(boxSplitEnded:finished:context:)];
-	[UIView commitAnimations];
 	
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"liftoff" ofType:@"m4a"];  
-	AVAudioPlayer* theAudio=[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];  
-	theAudio.delegate = self;  
-	[theAudio play];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[self resetState];
+	[self splitBox];
+}
+
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+	[player stop];
 }
 
 - (void)boxSplitEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
@@ -68,6 +62,9 @@
 } 
 
 - (void)resetState {
+	boxTop.center = CGPointMake(512, 374);
+	boxBottom.center = CGPointMake(512, 374);
+	installView.hidden = NO;
 	currentPage = 0;
 	percentCounter = 0;
 	dataCounter = 0;
@@ -81,7 +78,31 @@
 	percentBar.image = [UIImage imageNamed:@"1.png"];
 }
 
+- (void)splitBox {
+	
+	// Slide the boxes apart
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:1.5]; // animation duration in seconds
+	//	boxTop.center = CGPointMake(512, -187);
+	//	boxBottom.center = CGPointMake(512, 935);
+	boxTop.center = CGPointMake(512, 354);
+	boxBottom.center = CGPointMake(512, 394);
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(boxSplitEnded:finished:context:)];
+	[UIView commitAnimations];
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"liftoff" ofType:@"m4a"];  
+	audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+	audioPlayer.delegate = self;  
+	[audioPlayer prepareToPlay];
+	[audioPlayer play];
+}
+
+- (IBAction)beginInstall {
+	installView.hidden = YES;
+}
+
 - (void)percentageTick {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	if(percentCounter == 99) { // finished installation
 		[self resetState];
 		[self finishInstall];
@@ -90,16 +111,20 @@
 		percentCounter++;
 		percentBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",percentCounter]];
 	}
+	[pool release];
 }
 
 - (void)dataTick {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	dataCounter++;
 	dataBar.image = [UIImage imageNamed:[NSString stringWithFormat:@"dataticker%03d.jpg",dataCounter]];
+	[pool release];
 }
 
 - (void)cancelInstall {
   [FlurryAPI logEvent:@"cancelInstall"];
 	[self resetState];
+	[self splitBox];
 }
 
 - (void)startInstall {
@@ -120,9 +145,8 @@
 
 - (void)finishInstall {
 	[FlurryAPI logEvent:@"finishInstall"];
-	SCFinishedViewController *fvc = [[SCFinishedViewController alloc] initWithNibName:@"SCFinishedViewController" bundle:nil];
-	[self presentModalViewController:fvc animated:NO];
-	[fvc release];
+	self.finishedViewController= [[[SCFinishedViewController alloc] initWithNibName:@"SCFinishedViewController" bundle:nil] autorelease];
+	[self presentModalViewController:finishedViewController animated:NO];
 //	[self.view addSubview:finishedViewController.view];
 	percentBar.hidden = YES;
 	dataBar.hidden = YES;

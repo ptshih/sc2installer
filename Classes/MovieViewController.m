@@ -25,41 +25,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-  self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[self movieURL]];
+  self.playerViewController = [[[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"rickroll" ofType:@"mov"]]] autorelease];
   
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerReady:) name:MPMoviePlayerLoadStateDidChangeNotification object:[playerViewController moviePlayer]];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerReady:) name:MPMoviePlayerLoadStateDidChangeNotification object:[playerViewController moviePlayer]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:[playerViewController moviePlayer]];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:MPMoviePlayerDidExitFullscreenNotification object:[playerViewController moviePlayer]];
   
   playerViewController.view.frame = self.view.bounds;
   
   [self.view addSubview:playerViewController.view];
-
+	[[playerViewController moviePlayer] play];
 
 }
 
-- (NSURL *)movieURL {
-
-  NSBundle *bundle = [NSBundle mainBundle];
-  NSString *moviePath = [bundle pathForResource:@"rickroll" ofType:@"mov"];
-  if(moviePath) {
-    return [NSURL fileURLWithPath:moviePath];
-  } else {
-    return nil;
-  }
-}
-
+/*
 - (void)playerReady:(NSNotification *)notification {
 	MPMoviePlayerController *player = [notification object];
-	if(player.loadState == 3) {
+	if(player.loadState == MPMovieL) {
 		[player play];
 	}
 }
+ */
 
 - (void)playbackFinished:(NSNotification *)notification {
-  MPMoviePlayerController *player = [notification object];
-  [player stop];
-  [player autorelease];
   [self dismissModalViewControllerAnimated:YES]; 
 }
 
@@ -71,7 +59,7 @@
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+//    [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
 }

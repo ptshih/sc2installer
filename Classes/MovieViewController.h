@@ -16,6 +16,4 @@
 
 @property (nonatomic, retain) MPMoviePlayerViewController *playerViewController;
 
-- (NSURL *)movieURL;
-
 @end

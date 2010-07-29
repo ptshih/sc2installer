@@ -11,6 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		25041F1A12012D0500FB24CC /* install.png in Resources */ = {isa = PBXBuildFile; fileRef = 25041F1912012D0500FB24CC /* install.png */; };
 		250B424111FFF78000D8D7EE /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 250B424011FFF78000D8D7EE /* Default-Landscape.png */; };
 		250B425111FFF93400D8D7EE /* box_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 250B424F11FFF93400D8D7EE /* box_bottom.png */; };
 		250B425211FFF93400D8D7EE /* box_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 250B425011FFF93400D8D7EE /* box_top.png */; };
@@ -426,6 +427,7 @@
 		1D3623250D0F684500981E51 /* StarcraftInstallerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarcraftInstallerAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* SC2Installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SC2Installer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		25041F1912012D0500FB24CC /* install.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = install.png; sourceTree = "<group>"; };
 		250B424011FFF78000D8D7EE /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		250B424F11FFF93400D8D7EE /* box_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_bottom.png; sourceTree = "<group>"; };
 		250B425011FFF93400D8D7EE /* box_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_top.png; sourceTree = "<group>"; };
@@ -1359,6 +1361,7 @@
 				250B43DE12000A6C00D8D7EE /* liftoff.m4a */,
 				25B2E66B1201063B00ACBD3C /* rickroll.mov */,
 				250B468B1200180600D8D7EE /* scv.png */,
+				25041F1912012D0500FB24CC /* install.png */,
 				256F36241200251A001E0BFB /* facepalm.png */,
 				256F36A212002F85001E0BFB /* complete.jpg */,
 				250B424F11FFF93400D8D7EE /* box_bottom.png */,
@@ -1831,6 +1834,7 @@
 				254470E31200FD8500B39D3E /* sc4.jpg in Resources */,
 				25B2E66C1201063B00ACBD3C /* rickroll.mov in Resources */,
 				25B2E67D120106B800ACBD3C /* MovieViewController.xib in Resources */,
+				25041F1A12012D0500FB24CC /* install.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1912,7 +1916,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A96A2D1A-B339-4FD0-A84A-9CEB911602CF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "75DEA8B0-8803-4BB4-BEC9-F3517913F597";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

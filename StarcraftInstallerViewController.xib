@@ -216,6 +216,50 @@
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="391023564"/>
 					</object>
+					<object class="IBUIView" id="474000206">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<object class="NSMutableArray" key="NSSubviews">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="638563170">
+								<reference key="NSNextResponder" ref="474000206"/>
+								<int key="NSvFlags">274</int>
+								<string key="NSFrameSize">{1024, 748}</string>
+								<reference key="NSSuperview" ref="474000206"/>
+								<int key="IBUIContentMode">1</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">install.png</string>
+								</object>
+							</object>
+							<object class="IBUIButton" id="312871645">
+								<reference key="NSNextResponder" ref="474000206"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{190, 197}, {263, 74}}</string>
+								<reference key="NSSuperview" ref="474000206"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<reference key="IBUIFont" ref="603133617"/>
+								<reference key="IBUIHighlightedTitleColor" ref="948631002"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="391023564"/>
+							</object>
+						</object>
+						<string key="NSFrameSize">{1024, 748}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 					<object class="IBUIImageView" id="570190003">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
@@ -377,6 +421,23 @@
 					</object>
 					<int key="connectionID">30</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">installView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="474000206"/>
+					</object>
+					<int key="connectionID">33</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">beginInstall</string>
+						<reference key="source" ref="312871645"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">35</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -415,6 +476,7 @@
 							<reference ref="631522696"/>
 							<reference ref="570190003"/>
 							<reference ref="185429589"/>
+							<reference ref="474000206"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -490,6 +552,28 @@
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">dataBar</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">31</int>
+						<reference key="object" ref="474000206"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="638563170"/>
+							<reference ref="312871645"/>
+						</object>
+						<reference key="parent" ref="766721923"/>
+						<string key="objectName">installView</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">32</int>
+						<reference key="object" ref="638563170"/>
+						<reference key="parent" ref="474000206"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">34</int>
+						<reference key="object" ref="312871645"/>
+						<reference key="parent" ref="474000206"/>
+						<string key="objectName">beginInstallButton</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -509,6 +593,9 @@
 					<string>22.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
 					<string>29.IBPluginDependency</string>
+					<string>31.IBPluginDependency</string>
+					<string>32.IBPluginDependency</string>
+					<string>34.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
@@ -523,6 +610,9 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{37, 153}, {1024, 768}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -549,7 +639,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">30</int>
+			<int key="maxID">35</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -562,6 +652,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>back</string>
+							<string>beginInstall</string>
 							<string>change</string>
 							<string>okCancel</string>
 							<string>pageLeft</string>
@@ -570,6 +661,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -583,6 +675,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>back</string>
+							<string>beginInstall</string>
 							<string>change</string>
 							<string>okCancel</string>
 							<string>pageLeft</string>
@@ -593,6 +686,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">back</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">beginInstall</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -625,6 +722,7 @@
 							<string>boxTop</string>
 							<string>dataBar</string>
 							<string>installLocation</string>
+							<string>installView</string>
 							<string>installerScreen</string>
 							<string>percentBar</string>
 						</object>
@@ -634,6 +732,7 @@
 							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UITextField</string>
+							<string>UIView</string>
 							<string>UIImageView</string>
 							<string>UIImageView</string>
 						</object>
@@ -646,6 +745,7 @@
 							<string>boxTop</string>
 							<string>dataBar</string>
 							<string>installLocation</string>
+							<string>installView</string>
 							<string>installerScreen</string>
 							<string>percentBar</string>
 						</object>
@@ -666,6 +766,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">installLocation</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">installView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">installerScreen</string>
@@ -873,6 +977,13 @@
 					<string key="className">UIViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">MediaPlayer.framework/Headers/MPMoviePlayerViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UINavigationController.h</string>
 					</object>
 				</object>
@@ -928,6 +1039,7 @@
 				<string>box_bottom.png</string>
 				<string>box_top.png</string>
 				<string>dataticker001.jpg</string>
+				<string>install.png</string>
 				<string>s0.jpg</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
@@ -936,6 +1048,7 @@
 				<string>{1024, 748}</string>
 				<string>{1024, 748}</string>
 				<string>{153, 19}</string>
+				<string>{1053, 693}</string>
 				<string>{1024, 674}</string>
 			</object>
 		</object>

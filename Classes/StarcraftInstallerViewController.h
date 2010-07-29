@@ -17,6 +17,7 @@
 	IBOutlet UIImageView *dataBar;
 	IBOutlet UIImageView *boxTop;
 	IBOutlet UIImageView *boxBottom;
+	IBOutlet UIView *installView;
 	IBOutlet UITextField *installLocation;
 	NSUInteger currentPage;
 	NSUInteger percentCounter;
@@ -27,6 +28,8 @@
 	NSTimer *installTimer;
 	NSTimer *storyTimer;
 	NSTimer *dataTimer;
+	
+	AVAudioPlayer *audioPlayer;
 }
 
 @property (nonatomic, retain) SCFinishedViewController *finishedViewController;
@@ -35,6 +38,7 @@
 @property (retain) NSTimer *installTimer;
 @property (retain) NSTimer *dataTimer;
 
+- (void)splitBox;
 - (void)resetState;
 - (void)fireStoryTimer;
 - (void)finishInstall;
@@ -44,6 +48,7 @@
 - (IBAction)back;
 - (IBAction)pageLeft;
 - (IBAction)pageRight;
+- (IBAction)beginInstall;
 
 @end
 
