@@ -34,42 +34,9 @@
 }
 */
 
-- (void)showKeyboard {
-	NSInteger offset;
-	if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft) {
-		offset = 80;
-	} else if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
-		offset = -80;
-	} else {
-		offset = 0;
-	}
-	[UIView beginAnimations:@"inputViewAnimation" context:nil];
-	[self.view setFrame:CGRectMake(self.view.frame.origin.x - offset, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-	[UIView commitAnimations];
-}
-
-- (void)hideKeyboard {
-	NSInteger offset;
-	if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
-		offset = -80;
-	} else if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft) {
-		offset = 80;
-	} else {
-		offset = 0;
-	}
-
-	[UIView beginAnimations:@"inputViewAnimation" context:nil];
-	[self.view setFrame:CGRectMake(self.view.frame.origin.x + offset, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-	[UIView commitAnimations];
-}
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard) name:UIKeyboardWillShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard) name:UIKeyboardWillHideNotification object:nil];
-	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
